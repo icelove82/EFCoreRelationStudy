@@ -1,4 +1,4 @@
-using EFCoreRelationStudy.Data;
+global using EFCoreRelationStudy.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);

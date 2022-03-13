@@ -6,6 +6,6 @@
         public string Username { get; set; } = string.Empty;
 
         /* Relation 1:n */
-        public List<Character> Characters { get; set; }
+        public List<Character>? Characters { get; set; }
     }
 }

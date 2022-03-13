@@ -1,4 +1,6 @@
-﻿namespace EFCoreRelationStudy.Data
+﻿using System.Text.Json.Serialization;
+
+namespace EFCoreRelationStudy.Data
 {
     public class Character
     {
@@ -8,6 +10,7 @@
 
         /* Relation 1:1 */
         public int UserId { get; set; }
-        public User User { get; set; }
+        [JsonIgnore]
+        public User? User { get; set; }
     }
 }
