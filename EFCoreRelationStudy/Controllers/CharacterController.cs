@@ -21,6 +21,7 @@ namespace EFCoreRelationStudy.Controllers
             var characters = await _context.Characters
                 .Where(c => c.UserId == userId)
                 .Include(c => c.User)
+                .Include(c => c.Weapon)
                 .ToListAsync();
 
             return Ok(characters);
@@ -43,7 +44,11 @@ namespace EFCoreRelationStudy.Controllers
         {
             return await _context.Characters
                 .Where(c => c.UserId == userId)
+                .Include(c => c.User)
+                .Include(c => c.Weapon)
                 .ToListAsync();
         }
+
+
     }
 }
