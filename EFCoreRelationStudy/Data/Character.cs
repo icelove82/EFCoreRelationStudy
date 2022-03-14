@@ -12,5 +12,8 @@ namespace EFCoreRelationStudy.Data
         public int UserId { get; set; }
         [JsonIgnore]
         public User? User { get; set; }
+
+        /* Relation 1:1 */
+        public Weapon? Weapon { get; set; }
     }
 }
