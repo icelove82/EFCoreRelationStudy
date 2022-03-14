@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace EFCoreRelationStudy.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220313042336_m2")]
-    partial class m2
+    [Migration("20220314070423_m6")]
+    partial class m6
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,6 +66,32 @@ namespace EFCoreRelationStudy.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("EFCoreRelationStudy.Data.Weapon", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<int>("CharacterId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Damage")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CharacterId")
+                        .IsUnique();
+
+                    b.ToTable("Weapons");
+                });
+
             modelBuilder.Entity("EFCoreRelationStudy.Data.Character", b =>
                 {
                     b.HasOne("EFCoreRelationStudy.Data.User", "User")
@@ -75,6 +101,22 @@ namespace EFCoreRelationStudy.Migrations
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("EFCoreRelationStudy.Data.Weapon", b =>
+                {
+                    b.HasOne("EFCoreRelationStudy.Data.Character", "Character")
+                        .WithOne("Weapon")
+                        .HasForeignKey("EFCoreRelationStudy.Data.Weapon", "CharacterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Character");
+                });
+
+            modelBuilder.Entity("EFCoreRelationStudy.Data.Character", b =>
+                {
+                    b.Navigation("Weapon");
                 });
 
             modelBuilder.Entity("EFCoreRelationStudy.Data.User", b =>
