@@ -15,5 +15,8 @@ namespace EFCoreRelationStudy.Data
 
         /* Relation 1:1 */
         public Weapon? Weapon { get; set; }
+
+        /* Relation n:n */
+        public List<Skill>? Skills { get; set; }
     }
 }
