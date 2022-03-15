@@ -22,6 +22,7 @@ namespace EFCoreRelationStudy.Controllers
                 .Where(c => c.UserId == userId)
                 .Include(c => c.User)
                 .Include(c => c.Weapon)
+                .Include(c => c.Skills)
                 .ToListAsync();
 
             return Ok(characters);
