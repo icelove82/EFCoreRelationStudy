@@ -23,11 +23,11 @@ namespace EFCoreRelationStudy.Controllers
                 .Include(c => c.Skills)
                 .FirstOrDefaultAsync();
             if (character == null)
-                return NotFound("Character not found.");
+                return BadRequest("Character not found.");
 
             var skill = await _context.Skills.FindAsync(req.SkillId);
             if (skill == null)
-                return NotFound("Skill not found.");
+                return BadRequest("Skill not found.");
 
             character?.Skills?.Add(skill);
             await _context.SaveChangesAsync();

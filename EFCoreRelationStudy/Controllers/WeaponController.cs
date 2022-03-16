@@ -20,7 +20,7 @@ namespace EFCoreRelationStudy.Controllers
         {
             var character = await _context.Characters.FindAsync(weapon.CharacterId);
             if (character == null)
-                return NotFound("Character not found.");
+                return BadRequest("Character not found.");
 
             _context.Weapons.Add(weapon);
             await _context.SaveChangesAsync();

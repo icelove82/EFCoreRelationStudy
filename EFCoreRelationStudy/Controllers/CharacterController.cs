@@ -33,7 +33,7 @@ namespace EFCoreRelationStudy.Controllers
         {
             var user = await _context.Users.FindAsync(character.UserId);
             if (user == null)
-                return NotFound("User not found.");
+                return BadRequest("User not found.");
 
             _context.Characters.Add(character);
             await _context.SaveChangesAsync();
